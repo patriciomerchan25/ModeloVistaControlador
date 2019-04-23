@@ -6,6 +6,9 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.clases.AireAcondicionado;
+import ec.edu.ups.clases.ComputadoraPersonal;
+import ec.edu.ups.clases.Refrigerador;
+import ec.edu.ups.clases.Televisor;
 import ec.edu.ups.controladores.ControladorAireAcondicionado;
 import ec.edu.ups.controladores.ControladorComputadora;
 import ec.edu.ups.controladores.ControladorRefrigerador;
@@ -34,7 +37,7 @@ public class Menu {
         ControladorRefrigerador controladorRefrigerador=new ControladorRefrigerador();
         ControladorTelevisor controladorTelevisor=new ControladorTelevisor();
         
-        do{
+         do{
                     
             System.out.println("MENU PRINCIPAL");
             System.out.println("1. CRUD Aire Acondicionado");
@@ -60,10 +63,7 @@ public class Menu {
                         
                         switch(opcionMenuAire){
                             case 1:
-                                //create
-                                //pide todos los datos por teclado
-                                //instancia un objeto
-                                //llama al metodo create del controlador
+                                //create pide todos los datos por teclado, instancia un objeto,llama al metodo create del controlador
                                 System.out.println("ingrese el condensador");
                                 String condensador=letra.nextLine();
                                 System.out.println("ingrese el compresor");
@@ -80,8 +80,7 @@ public class Menu {
                                 String clima=letra.nextLine();
                                 System.out.println("ingrese cosina");
                                 String cosina=letra.nextLine();
-                                System.out.println("ingrese el codigo");
-                                int codigo=num.nextInt();
+                                
                                 System.out.println("ingrese la marca");
                                 String marca=letra.nextLine();
                                 System.out.println("ingrese el nombre");
@@ -90,64 +89,64 @@ public class Menu {
                                 double precio=num.nextDouble();
                                 
                               
-                                AireAcondicionado objeto=new AireAcondicionado(condensador, compresor, evaporador, termoestato, lineaPequenia,
-                                        limpieza, clima, cosina, codigo, marca, nombre, precio);
+                                 AireAcondicionado objeto=new AireAcondicionado(condensador, compresor, evaporador, termoestato, lineaPequenia,
+                                        limpieza, clima, cosina, 0, marca, nombre, precio);
                                         
                                 controladorAire.create(objeto);
-                                System.out.println("\n"+objeto+"\n");
                                 break;
                             case 2:
-                                //read
-                                //pide el codigo por teclado
-                                //llama al metodo read del controlador
-                                //visualizo los datos del objeto
-                                System.out.println("ingrese el codigo");
+                                //read //pide el codigo por teclado //llama al metodo read del controlador//visualizo los datos del objeto
+                                System.out.println("ingrese el codigo del Aire Acondicionado");
                                 int codigoRead=num.nextInt();
                                 controladorAire.read(codigoRead);
+                               
+                                
                                 break;
                             case 3:
-                                //update
-                                //pide todos los datos por teclado
-                                //instancia un objeto
-                                //llama al metodo update del controlador
-                                  System.out.println("ingrese el condensador");
-                                String condensadorUP=letra.nextLine();
+                                //update//pide todos los datos por teclado//instancia un objeto //llama al metodo update del controlador
+                                System.out.println("ingrese el codigo del Aire Acondicionado");
+                                codigoRead=num.nextInt();
+                                if (controladorAire.read(codigoRead) != null) {
+                                    System.out.println("ingrese el condensador");
+                                 condensador=letra.nextLine();
                                 System.out.println("ingrese el compresor");
-                                String compresorUP=letra.nextLine();
+                                compresor=letra.nextLine();
                                 System.out.println("ingrese el evaporador");
-                                String evaporadorUP=letra.nextLine();
+                                evaporador=letra.nextLine();
                                 System.out.println("ingrese el termoestato");
-                                String termoestatoUP=letra.nextLine();
+                                termoestato=letra.nextLine();
                                 System.out.println("ingrese la lineaPequenia");
-                                String lineaPequeniaUP=letra.nextLine();
+                                lineaPequenia=letra.nextLine();
                                 System.out.println("ingrese  limpieza");
-                                String limpiezaUP=letra.nextLine();
+                                 limpieza=letra.nextLine();
                                 System.out.println("ingrese el clima");
-                                String climaUP=letra.nextLine();
+                                clima=letra.nextLine();
                                 System.out.println("ingrese cosina");
-                                String cosinaUP=letra.nextLine();
+                                cosina=letra.nextLine();
                                 
-                                System.out.println("ingrese el codigo");
-                                int codigoUP=num.nextInt();
                                 System.out.println("ingrese la marca");
-                                String marcaUP=letra.nextLine();
+                                marca=letra.nextLine();
                                 System.out.println("ingrese el nombre");
-                                String nombreUP=letra.nextLine();
+                                nombre=letra.nextLine();
                                 System.out.println("ingrese el precio");
-                                double precioUP=num.nextDouble();
+                                precio=num.nextDouble();
                                 
                               
-                                AireAcondicionado objeto1=new AireAcondicionado(condensadorUP, compresorUP, evaporadorUP, termoestatoUP, lineaPequeniaUP,
-                                        limpiezaUP, climaUP, cosinaUP, codigoUP, marcaUP, nombreUP, precioUP);
-                                controladorAire.update(objeto1);
+                               objeto=new AireAcondicionado(condensador, compresor, evaporador, termoestato, lineaPequenia,
+                                        limpieza, clima, cosina, 0, marca, nombre, precio);
+                               objeto.setCodigo(codigoRead);
+                               controladorAire.update(objeto);
+                                }else {
+                                    System.out.println("El Aire Acondicionado no existe");
+                                }
+                               
                                 break;
                             case 4:
-                                //delete
-                                //pide el codigo por teclado
-                                //llama al metodo delete del controlador
-                                System.out.println("ingrese el codigo");
-                                int codigoDL=num.nextInt();
-                                controladorAire.delete(codigoDL);
+                                //delete//pide el codigo por teclado //llama al metodo delete del controlador
+                                System.out.println("ingrese el codigo del Aire Acondicionado que desea Eliminar");
+                                codigoRead=num.nextInt();
+                                controladorAire.delete(codigoRead);
+                               
                                 break;
                             case 5:
                                 //regresar
@@ -159,20 +158,317 @@ public class Menu {
                     break;
                 case 2:
                     //opcion para el crud de refrigerador
+                    System.out.println("MENU REFRIGERADOR");
+                        System.out.println("1. Create");
+                        System.out.println("2. Read");
+                        System.out.println("3. Update");
+                        System.out.println("4. Delete");
+                        System.out.println("5. Imprimir");
+                        System.out.println("6. Regresar al menu principal");
+                        System.out.println("Selecciona una opción");
+                        opcionMenuRefrigerador = entrada.nextInt();
                     do{
+                        switch(opcionMenuRefrigerador){
+                            case 1:
+                                //create pide todos los datos por teclado, instancia un objeto,llama al metodo create del controlador
+                                 System.out.println("ingrese el congelador");
+                                String congelar=letra.nextLine();
+                                System.out.println("ingrese el numero de Puertas");
+                                String numeroPuertas=letra.nextLine();
+                                System.out.println("ingrese el led ");
+                                String led=letra.nextLine();
+                                System.out.println("ingrese la temperatura");
+                                String temperatura=letra.nextLine();
+                                System.out.println("ingrese la lineaPequenia");
+                                String lineaPequenia=letra.nextLine();
+                                System.out.println("ingrese  limpieza");
+                                String limpieza=letra.nextLine();
+                                System.out.println("ingrese el clima");
+                                String clima=letra.nextLine();
+                                System.out.println("ingrese cosina");
+                                String cosina=letra.nextLine();
+                                
+                                System.out.println("ingrese la marca");
+                                String marca=letra.nextLine();
+                                System.out.println("ingrese el nombre");
+                                String nombre=letra.nextLine();
+                                System.out.println("ingrese el precio");
+                                double precio=num.nextDouble();
+                                Refrigerador objeto=new Refrigerador(congelar, numeroPuertas, led, temperatura, 
+                                        lineaPequenia, limpieza, clima, cosina, 0, marca, nombre, precio);
+                                controladorRefrigerador.create(objeto);
+                                break;
+                            case 2:
+                                //read //pide el codigo por teclado //llama al metodo read del controlador//visualizo los datos del objeto
+                                System.out.println("Ingrese el codigo del lactante");
+                                int codigoRead = num.nextInt();
+                                System.out.println(controladorRefrigerador.read(codigoRead));
+                                
+                                break;
+                            case 3:
+                                //update//pide todos los datos por teclado//instancia un objeto //llama al metodo update del controlador
+                                System.out.println("Ingrese el codigo del Refrigerador");
+                                codigoRead = num.nextInt();
+                                 if (controladorAire.read(codigoRead) != null) {
+                                    System.out.println("ingrese el congelar");
+                                 congelar=letra.nextLine();
+                                System.out.println("ingrese el numero de Puertas");
+                                numeroPuertas=letra.nextLine();
+                                System.out.println("ingrese el led");
+                                led=letra.nextLine();
+                                System.out.println("ingrese la temperatura");
+                                temperatura=letra.nextLine();
+                                System.out.println("ingrese la lineaPequenia");
+                                lineaPequenia=letra.nextLine();
+                                System.out.println("ingrese  limpieza");
+                                 limpieza=letra.nextLine();
+                                System.out.println("ingrese el clima");
+                                clima=letra.nextLine();
+                                System.out.println("ingrese cosina");
+                                cosina=letra.nextLine();
+                                
+                                System.out.println("ingrese la marca");
+                                marca=letra.nextLine();
+                                System.out.println("ingrese el nombre");
+                                nombre=letra.nextLine();
+                                System.out.println("ingrese el precio");
+                                precio=num.nextDouble();
+                                
+                              
+                               objeto=new Refrigerador(congelar, numeroPuertas, led, temperatura, 
+                                        lineaPequenia, limpieza, clima, cosina, 0, marca, nombre, precio);
+                               objeto.setCodigo(codigoRead);
+                               controladorRefrigerador.update(objeto);
+                                 }else {
+                                    System.out.println("El Refrigerador no existe");
+                                }
+                               
+                                break;
+                            case 4:
+                                //delete//pide el codigo por teclado //llama al metodo delete del controlador
+                                 System.out.println("Ingrese el codigo del Refrigerador");
+                                codigoRead = num.nextInt();
+                                controladorRefrigerador.delete(codigoRead);
+                               
+                                break;
+                            case 5:
+                                //imprimir
+                                controladorRefrigerador.imprimir();
+                                break;
+                            case 6:
+                                //regresar
+                                System.out.println("Regresando al menú principal");
+                                break;
+                        }
                         
-                    }while(opcionMenuRefrigerador !=5);
+                    }while(opcionMenuRefrigerador !=6);
                     break;
                 case 3:
                     //opcion para el crud de computador
+                    System.out.println("MENU COMPUTADOR");
+                        System.out.println("1. Create");
+                        System.out.println("2. Read");
+                        System.out.println("3. Update");
+                        System.out.println("4. Delete");
+                        System.out.println("5. Imprimir");
+                        System.out.println("6. Regresar al menu principal");
+                        System.out.println("Selecciona una opción");
+                        opcionMenuComputador = entrada.nextInt();
                     do{
-                        
-                    }while(opcionMenuComputador !=5);
+                        switch(opcionMenuComputador){
+                            case 1:
+                                //create pide todos los datos por teclado, instancia un objeto,llama al metodo create del controlador
+                                 System.out.println("ingrese el cpu");
+                                String cpu=letra.nextLine();
+                                System.out.println("ingrese el monitor");
+                                String monitor=letra.nextLine();
+                                System.out.println("ingrese el parlante ");
+                                String parlante=letra.nextLine();
+                                System.out.println("ingrese el mouse");
+                                String mouse=letra.nextLine();
+                                System.out.println("ingrese la linea Grande");
+                                String lineaGrande=letra.nextLine();
+                                System.out.println("ingrese  el audio");
+                                String audio=letra.nextLine();
+                                System.out.println("ingrese la imagen");
+                                String imagen=letra.nextLine();
+                                System.out.println("ingrese el sonido");
+                                String sonido=letra.nextLine();
+                                
+                                System.out.println("ingrese la marca");
+                                String marca=letra.nextLine();
+                                System.out.println("ingrese el nombre");
+                                String nombre=letra.nextLine();
+                                System.out.println("ingrese el precio");
+                                double precio=num.nextDouble();
+                                ComputadoraPersonal objeto=new ComputadoraPersonal(cpu, monitor, parlante, mouse, lineaGrande, audio, 
+                                        imagen, sonido, 0, marca, nombre, precio);
+                                controladorComputadora.create(objeto);
+                                break;
+                            case 2:
+                                //read //pide el codigo por teclado //llama al metodo read del controlador//visualizo los datos del objeto
+                                System.out.println("Ingrese el codigo del Computador");
+                                int codigoRead = num.nextInt();
+                               controladorComputadora.read(codigoRead);
+                                
+                                break;
+                            case 3:
+                                //update//pide todos los datos por teclado//instancia un objeto //llama al metodo update del controlador
+                                System.out.println("Ingrese el codigo del Computador");
+                                 codigoRead = num.nextInt();
+                                if (controladorAire.read(codigoRead) != null) {
+                                   System.out.println("ingrese el cpu");
+                                 cpu=letra.nextLine();
+                                System.out.println("ingrese el monitor");
+                                 monitor=letra.nextLine();
+                                System.out.println("ingrese el parlante ");
+                                 parlante=letra.nextLine();
+                                System.out.println("ingrese el mouse");
+                                 mouse=letra.nextLine();
+                                System.out.println("ingrese la linea Grande");
+                                 lineaGrande=letra.nextLine();
+                                System.out.println("ingrese  el audio");
+                                 audio=letra.nextLine();
+                                System.out.println("ingrese la imagen");
+                                 imagen=letra.nextLine();
+                                System.out.println("ingrese el sonido");
+                                 sonido=letra.nextLine();
+                                
+                                System.out.println("ingrese la marca");
+                                marca=letra.nextLine();
+                                System.out.println("ingrese el nombre");
+                                nombre=letra.nextLine();
+                                System.out.println("ingrese el precio");
+                                precio=num.nextDouble();
+                                
+                                 objeto=new ComputadoraPersonal(cpu, monitor, parlante, mouse, lineaGrande, audio, 
+                                        imagen, sonido, 0, marca, nombre, precio);
+                                }else {
+                                    System.out.println("El Computador no existe");
+                                }
+                              
+                                break;
+                            case 4:
+                                //delete//pide el codigo por teclado //llama al metodo delete del controlador
+                                System.out.println("Ingrese el codigo del Computador");
+                                 codigoRead = num.nextInt();
+                                 controladorComputadora.delete(codigoRead);
+                               
+                                break;
+                            case 5:
+                                //imprimir
+                                controladorComputadora.imprimir();
+                                break;
+                            case 6:
+                                //regresar
+                                System.out.println("Regresando al menú principal");
+                                break;
+                        }
+                    }while(opcionMenuComputador !=6);
                     break;
                 case 4:
                     //opcion para el crud de televisor
+                    System.out.println("MENU TELEVISOR");
+                        System.out.println("1. Create");
+                        System.out.println("2. Read");
+                        System.out.println("3. Update");
+                        System.out.println("4. Delete");
+                        System.out.println("5. Imprimir");
+                        System.out.println("6. Regresar al menu principal");
+                        System.out.println("Selecciona una opción");
+                        opcionMenuTelevisor = entrada.nextInt();
                     do{
-                        
+                        switch(opcionMenuTelevisor){
+                            case 1:
+                                //create pide todos los datos por teclado, instancia un objeto,llama al metodo create del controlador
+                                  System.out.println("ingrese el control");
+                                String control=letra.nextLine();
+                                System.out.println("ingrese el largo");
+                                String largo=letra.nextLine();
+                                System.out.println("ingrese el ancho ");
+                                String ancho=letra.nextLine();
+                                System.out.println("ingrese el hdmi");
+                                String hdmi=letra.nextLine();
+                                System.out.println("ingrese la linea Grande");
+                                String lineaGrande=letra.nextLine();
+                                System.out.println("ingrese  el audio");
+                                String audio=letra.nextLine();
+                                System.out.println("ingrese la imagen");
+                                String imagen=letra.nextLine();
+                                System.out.println("ingrese el sonido");
+                                String sonido=letra.nextLine();
+                                
+                                System.out.println("ingrese la marca");
+                                String marca=letra.nextLine();
+                                System.out.println("ingrese el nombre");
+                                String nombre=letra.nextLine();
+                                System.out.println("ingrese el precio");
+                                double precio=num.nextDouble();
+                                Televisor objeto=new Televisor(control, largo, ancho, hdmi, lineaGrande, audio, imagen, sonido, 0
+                                        , marca, nombre, precio);
+                                controladorTelevisor.crear(objeto);
+                                break;
+                            case 2:
+                                //read //pide el codigo por teclado //llama al metodo read del controlador//visualizo los datos del objeto
+                                System.out.println("Ingrese el codigo del Televisor");
+                                 int codigoRead = num.nextInt();
+                                 System.out.println(controladorTelevisor.read(codigoRead));
+                                
+                                break;
+                            case 3:
+                                //update//pide todos los datos por teclado//instancia un objeto //llama al metodo update del controlador
+                                  System.out.println("Ingrese el codigo del Televisor");
+                                  codigoRead = num.nextInt();
+                                if (controladorAire.read(codigoRead) != null) {
+                                    System.out.println("ingrese el control");
+                                 control=letra.nextLine();
+                                System.out.println("ingrese el largo");
+                                 largo=letra.nextLine();
+                                System.out.println("ingrese el ancho ");
+                                 ancho=letra.nextLine();
+                                System.out.println("ingrese el hdmi");
+                                 hdmi=letra.nextLine();
+                                System.out.println("ingrese la linea Grande");
+                                 lineaGrande=letra.nextLine();
+                                System.out.println("ingrese  el audio");
+                                 audio=letra.nextLine();
+                                System.out.println("ingrese la imagen");
+                                 imagen=letra.nextLine();
+                                System.out.println("ingrese el sonido");
+                                 sonido=letra.nextLine();
+                                
+                                System.out.println("ingrese la marca");
+                                marca=letra.nextLine();
+                                System.out.println("ingrese el nombre");
+                                nombre=letra.nextLine();
+                                System.out.println("ingrese el precio");
+                                precio=num.nextDouble();
+                                
+                                objeto=new Televisor(control, largo, ancho, hdmi, lineaGrande, audio, imagen, sonido, 0
+                                        , marca, nombre, precio);
+                                }else {
+                                    System.out.println("El Televisor no existe");
+                                }
+                                
+                               
+                                break;
+                            case 4:
+                                //delete//pide el codigo por teclado //llama al metodo delete del controlador
+                                System.out.println("Ingrese el codigo del Televisor");
+                                  codigoRead = num.nextInt();
+                                  controladorTelevisor.delete(codigoRead);
+                               
+                                break;
+                                case 5:
+                                //imprimir
+                                    controladorTelevisor.imprimir();
+                                
+                                break;
+                            case 6:
+                                //regresar
+                                System.out.println("Regresando al menú principal");
+                                break;
+                        }
                     }while(opcionMenuTelevisor !=5);
                     break;
                 case 5:
@@ -182,6 +478,7 @@ public class Menu {
             }
         }while(opcionMenuPrincipal != 5);
         
+        
     }
-    
 }
+

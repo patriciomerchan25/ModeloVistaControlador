@@ -12,7 +12,7 @@ package ec.edu.ups.clases;
  * @see http://ups.edu.ec
  * @author Patricio Merchán
  */
-public class Electrodomestico {
+public class Electrodomestico implements Comparable<Electrodomestico>{
     
     //Atributos de la clase Electrodomestico 
     
@@ -68,6 +68,38 @@ public class Electrodomestico {
     @Override
     public String toString() {
         return "Electrodomestico{" + "codigo=" + codigo + ", marca=" + marca + ", nombre=" + nombre + ", Precio=" + Precio + '}';
+    }
+    
+     //set
+    @Override
+    public int hashCode() {
+        int hash = 3;    
+        hash = 47 * hash + this.codigo;
+        return hash;
+    }
+
+   
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Electrodomestico other = (Electrodomestico) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int compareTo(Electrodomestico o) {
+        return nombre.compareTo(o.nombre);
     }
     
     

@@ -14,7 +14,7 @@ import ec.edu.ups.interfaces.Manual;
  * @see http://ups.edu.ec
  * @author Patricio Merchá
  */
-public class Televisor extends LineaMarron implements Manual{
+public final class Televisor extends LineaMarron implements Manual{
     private String control;
     private String largo;
     private String ancho;

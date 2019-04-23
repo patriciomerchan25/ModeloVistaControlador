@@ -6,7 +6,11 @@
 package ec.edu.ups.controladores;
 import ec.edu.ups.clases.Refrigerador;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 
 /**
@@ -14,43 +18,50 @@ import java.util.List;
  * @author patrick
  */
 public class ControladorRefrigerador {
-    
-     private List<Refrigerador> lista;
+    private SortedSet<Refrigerador> listaOrdenada;
+    private int codigo;
 
     public ControladorRefrigerador() {
-        lista = new ArrayList<>();
+        listaOrdenada = new TreeSet<>();
+        codigo = 1;
     }
     
     public void create(Refrigerador objeto){
-        lista.add(objeto);
+        codigo++;
+        objeto.setCodigo(codigo);
+        listaOrdenada.add(objeto);
     }
     
     public Refrigerador read(int codigo){
-        for (Refrigerador refrigerador : lista) {
+        for (Refrigerador refrigerador : listaOrdenada) {
             if(refrigerador.getCodigo() == codigo){
                 return refrigerador;
             }
         }
         return null;
-    }
+    }            
     
     public void update(Refrigerador objeto){
-        for (int i = 0; i < lista.size(); i++) {
-            Refrigerador elemento = lista.get(i);
-            if(elemento.getCodigo() == objeto.getCodigo()){
-                lista.set(i, objeto);
-                break;
-            }            
+        if(listaOrdenada.contains(objeto)){
+            listaOrdenada.remove(objeto);
+            listaOrdenada.add(objeto);
         }
     }
     
     public void delete(int codigo){
-        for (int i = 0; i < lista.size(); i++) {
-            Refrigerador elemento = lista.get(i);
-            if(elemento.getCodigo() == codigo){
-                lista.remove(i);
+        for (Refrigerador refrigerador : listaOrdenada) {
+            if(refrigerador.getCodigo() == codigo){
+                listaOrdenada.remove(refrigerador);
                 break;
-            }            
+            }
+        }
+    }
+    
+    public void imprimir(){
+        System.out.println("Lista Ordenada por nombre");
+        for (Refrigerador refrigerador : listaOrdenada) {
+            System.out.println(refrigerador);
         }
     }
 }
+

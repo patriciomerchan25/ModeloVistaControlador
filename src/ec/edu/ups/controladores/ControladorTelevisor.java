@@ -6,7 +6,9 @@
 package ec.edu.ups.controladores;
 import ec.edu.ups.clases.Televisor;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -14,14 +16,19 @@ import java.util.List;
  */
 public class ControladorTelevisor {
     
-    private List<Televisor> lista;
+    private Set<Televisor> lista;
+    private int codigo; 
 
     public ControladorTelevisor() {
-        lista = new ArrayList<>();
+        lista = new HashSet<>();
+        codigo = 1;
     }
     
-    public void create(Televisor objeto){
-        lista.add(objeto);
+    public void crear(Televisor objeto){
+        
+        objeto.setCodigo(codigo);
+        codigo++;
+        lista.add(objeto);        
     }
     
     public Televisor read(int codigo){
@@ -29,27 +36,28 @@ public class ControladorTelevisor {
             if(televisor.getCodigo() == codigo){
                 return televisor;
             }
-        }
+        }        
         return null;
     }
     
     public void update(Televisor objeto){
-        for (int i = 0; i < lista.size(); i++) {
-            Televisor elemento = lista.get(i);
-            if(elemento.getCodigo() == objeto.getCodigo()){
-                lista.set(i, objeto);
-                break;
-            }            
+        if(lista.contains(objeto)){
+            lista.remove(objeto);
+            lista.add(objeto);
         }
     }
     
     public void delete(int codigo){
-        for (int i = 0; i < lista.size(); i++) {
-            Televisor elemento = lista.get(i);
-            if(elemento.getCodigo() == codigo){
-                lista.remove(i);
+        for (Televisor televisor : lista) {
+            if(televisor.getCodigo() == codigo){
+                lista.remove(televisor);
                 break;
-            }            
+            }
+        }  
+    } 
+    public void imprimir(){
+        for (Televisor televisor : lista) {
+            System.out.println(televisor.getNombre());   
         }
     }
 }

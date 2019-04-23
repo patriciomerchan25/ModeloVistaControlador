@@ -13,7 +13,7 @@ import ec.edu.ups.interfaces.Manual;
  * @see http://ups.edu.ec
  * @author Patricio Merchá
  */
-public class ComputadoraPersonal extends LineaMarron implements Manual{
+public final class ComputadoraPersonal extends LineaMarron implements Manual{
     
     private String cpu;
     private String monitor;

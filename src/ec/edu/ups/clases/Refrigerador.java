@@ -15,7 +15,7 @@ import java.util.List;
  * @see http://ups.edu.ec
  * @author Patricio Merchá
  */
-public class Refrigerador extends LineaBlanca implements Manual{
+public final class Refrigerador extends LineaBlanca implements Manual{
     
     
     private String congelar;

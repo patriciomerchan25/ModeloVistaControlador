@@ -13,7 +13,7 @@ import ec.edu.ups.interfaces.Manual;
  * @see http://ups.edu.ec
  * @author Patricio Merchá
  */
-public class AireAcondicionado extends LineaBlanca implements Manual{
+public final class AireAcondicionado extends LineaBlanca implements Manual{
     
        private String condensador;
     private String compresor;

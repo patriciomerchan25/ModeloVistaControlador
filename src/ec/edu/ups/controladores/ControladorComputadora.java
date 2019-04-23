@@ -5,50 +5,43 @@
  */
 package ec.edu.ups.controladores;
 import ec.edu.ups.clases.ComputadoraPersonal;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.Map;
+import java.util.TreeMap;
 /**
  *
  * @author patrick
  */
-public class ControladorComputadora {
-      private List<ComputadoraPersonal> lista;
 
+public class ControladorComputadora {
+      private Map<Integer,ComputadoraPersonal> lista;
+      private int codigo;
     public ControladorComputadora() {
-        lista = new ArrayList<>();
+        lista = new TreeMap<>();
+        codigo = 1;
     }
     
     public void create(ComputadoraPersonal objeto){
-        lista.add(objeto);
+        codigo ++;
+        objeto.setCodigo(codigo);
+        lista.put(codigo, objeto);
     }
     
     public ComputadoraPersonal read(int codigo){
-        for (ComputadoraPersonal computadora : lista) {
-            if(computadora.getCodigo() == codigo){
-                return computadora;
+          if(lista.get(codigo) != null){
+                return lista.get(codigo);
             }
-        }
-        return null;
+          return null;
     }
     
     public void update(ComputadoraPersonal objeto){
-        for (int i = 0; i < lista.size(); i++) {
-            ComputadoraPersonal elemento = lista.get(i);
-            if(elemento.getCodigo() == objeto.getCodigo()){
-                lista.set(i, objeto);
-                break;
-            }            
-        }
+        lista.put(objeto.getCodigo(), objeto);
     }
     
     public void delete(int codigo){
-        for (int i = 0; i < lista.size(); i++) {
-            ComputadoraPersonal elemento = lista.get(i);
-            if(elemento.getCodigo() == codigo){
-                lista.remove(i);
-                break;
-            }            
-        }
+        lista.remove(codigo);
+}
+      public void imprimir(){
+        System.out.println(lista.entrySet());
     }
+    
 }
