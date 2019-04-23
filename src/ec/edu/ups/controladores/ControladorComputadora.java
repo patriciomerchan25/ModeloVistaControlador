@@ -17,7 +17,7 @@ public class ControladorComputadora {
       private int codigo;
     public ControladorComputadora() {
         lista = new TreeMap<>();
-        codigo = 1;
+        codigo = 0;
     }
     
     public void create(ComputadoraPersonal objeto){

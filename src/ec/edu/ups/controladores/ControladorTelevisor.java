@@ -21,7 +21,7 @@ public class ControladorTelevisor {
 
     public ControladorTelevisor() {
         lista = new HashSet<>();
-        codigo = 1;
+        codigo = 0;
     }
     
     public void crear(Televisor objeto){

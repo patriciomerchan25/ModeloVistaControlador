@@ -23,7 +23,7 @@ public class ControladorRefrigerador {
 
     public ControladorRefrigerador() {
         listaOrdenada = new TreeSet<>();
-        codigo = 1;
+        codigo = 0;
     }
     
     public void create(Refrigerador objeto){
