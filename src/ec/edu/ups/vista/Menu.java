@@ -16,8 +16,8 @@ import ec.edu.ups.controladores.ControladorTelevisor;
 import java.util.Scanner;
 
 /**
- *
- * @author patrick
+ * 
+ * @author Patricio Merchán
  */
 public class Menu {
     public static void main(String[] args){
@@ -210,7 +210,7 @@ public class Menu {
                                 //update//pide todos los datos por teclado//instancia un objeto //llama al metodo update del controlador
                                 System.out.println("Ingrese el codigo del Refrigerador");
                                 codigoRead = num.nextInt();
-                                 if (controladorAire.read(codigoRead) != null) {
+                                 if (controladorRefrigerador.read(codigoRead) != null) {
                                     System.out.println("ingrese el congelar");
                                  congelar=letra.nextLine();
                                 System.out.println("ingrese el numero de Puertas");
@@ -425,7 +425,7 @@ public class Menu {
                                 //update//pide todos los datos por teclado//instancia un objeto //llama al metodo update del controlador
                                   System.out.println("Ingrese el codigo del Televisor");
                                   codigoRead = num.nextInt();
-                                if (controladorAire.read(codigoRead) != null) {
+                                if (controladorTelevisor.read(codigoRead) != null) {
                                     System.out.println("ingrese el control");
                                  control=letra.nextLine();
                                 System.out.println("ingrese el largo");
