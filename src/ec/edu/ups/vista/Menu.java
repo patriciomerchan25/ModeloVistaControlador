@@ -319,7 +319,7 @@ public class Menu {
                                 //update//pide todos los datos por teclado//instancia un objeto //llama al metodo update del controlador
                                 System.out.println("Ingrese el codigo del Computador");
                                  codigoRead = num.nextInt();
-                                if (controladorAire.read(codigoRead) != null) {
+                                if (controladorComputadora.read(codigoRead) != null) {
                                 System.out.println("ingrese el cpu");
                                  cpu=letra.nextLine();
                                 System.out.println("ingrese el monitor");
